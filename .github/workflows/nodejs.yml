@@ -41,3 +41,7 @@ jobs:
         ls -al
       env:
         CI: true
+
+    - uses: actions/upload-artifact@master
+      with:
+        path: coverage/
