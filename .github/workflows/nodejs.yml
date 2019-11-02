@@ -18,10 +18,16 @@ jobs:
       with:
         fetch-depth: 1
 
+    - name: Node version
+      run: node -v
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+
+    - name: Node version
+      run: node -v
 
     - uses: actions/cache@preview
       with:
