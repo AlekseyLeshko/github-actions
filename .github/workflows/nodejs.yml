@@ -6,8 +6,18 @@ on:
       - master
 
 jobs:
+  storybook:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.10.0]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build storybook
+      run: echo 'Build storybook'
+
   unit_testing:
-    name: Unit testing
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -59,7 +69,6 @@ jobs:
         path: coverage/
 
   build:
-    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
