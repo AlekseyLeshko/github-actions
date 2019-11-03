@@ -1,8 +1,8 @@
-name: Master branch
+name: Default workflow
 
 on:
   push:
-    branches:
+    branches-ignore:
       - master
 
 jobs:
