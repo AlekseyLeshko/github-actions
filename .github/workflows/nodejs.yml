@@ -96,10 +96,10 @@ jobs:
 
 
   e2e_testing:
-    max-parallel: 2
     needs: deploy_to_aws
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 2
       matrix:
         node-version: [10.10.0]
 
