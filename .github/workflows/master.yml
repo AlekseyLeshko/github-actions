@@ -34,7 +34,7 @@ jobs:
         git --version
         git status
         git config --global push.default simple
-        git config --global user.email "github@example.com"
+        git config --global user.email "alekseyleshko@gmail.com"
         git config --global user.name $GITHUB_ACTOR
         npm version $VERSION_TYPE -m "v%s"
         git status
