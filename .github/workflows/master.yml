@@ -22,6 +22,8 @@ jobs:
     - name: Bump version
       run: |
         git branch
+        git checkout master
+        git branch
         export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
         echo $CURRENT_HASH
         export COMMIT_MESSAGE="$(echo $(git log -n 1 --pretty=format:%B))"
