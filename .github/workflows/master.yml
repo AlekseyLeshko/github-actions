@@ -15,9 +15,6 @@ jobs:
         node-version: [10.10.0]
     runs-on: ubuntu-latest
     steps:
-    - name: Deliverybot Deployment Status
-      uses: deliverybot/deployment-status@v0.0.1
-
     - uses: actions/checkout@v1
 
     - name: Build storybook
@@ -35,11 +32,6 @@ jobs:
         git --version
         git status
         # npm version $VERSION_TYPE -m "v%s"
-        # git status
-        # git push --follow-tags
-
-    - name: 'master success'
-      uses: deliverybot/deployment-status@v0.0.1
-      with:
-        state: 'success'
-        token: '${{ github.token }}'
+        npm version patch -m "v%s"
+        git status
+        git push --follow-tags
