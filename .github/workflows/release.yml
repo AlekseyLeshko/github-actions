@@ -1,9 +1,7 @@
 name: Release workflow
 
 on:
-  push:
-    tags:
-    - 'v*'
+  create
 
 jobs:
   storybook:
