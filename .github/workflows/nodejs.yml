@@ -93,3 +93,57 @@ jobs:
     steps:
     - name: Run a one-line script
       run: echo 'Deploy to stage'
+
+
+  e2e_testing:
+    max-parallel: 2
+    needs: deploy_to_aws
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.10.0]
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Node version
+        run: node -v
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Node version
+        run: node -v
+
+      - uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - uses: actions/cache@preview
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: install dependencies
+        run: yarn --no-progress --frozen-lockfile
+
+      - name: test
+        run: |
+          yarn test:ci
+          ls -al
+        env:
+          CI: true
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: coverage
+          path: coverage/
