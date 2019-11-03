@@ -1,0 +1,31 @@
+name: Development
+
+on: ['deployment']
+
+jobs:
+  deployment:
+
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: 'use node 8.x'
+      uses: actions/setup-node@v1
+      with:
+        node-version: 8.x
+
+    - name: 'deployment pending'
+      uses: 'deliverybot/deployment-status@v1'
+      with:
+        state: 'pending'
+        token: '${{ github.token }}'
+
+    - name: 'deploy'
+      run: |
+        npm run test
+
+    - name: 'deployment success'
+      uses: 'deliverybot/deployment-status@v1'
+      with:
+        state: 'success'
+        token: '${{ github.token }}'
