@@ -3,7 +3,7 @@ name: Default workflow
 on:
   push:
     branches-ignore:
-      - master
+      - 'master'
     tags-ignore:
       - '*'
       - '**'
