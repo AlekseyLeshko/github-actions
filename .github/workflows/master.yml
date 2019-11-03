@@ -5,11 +5,11 @@ on:
     branch:
       - master
     branches-ignore:
-      - *
-      - **
+      - '*'
+      - '**'
     tags-ignore:
-      - *
-      - **
+      - '*'
+      - '**'
 
 jobs:
   bump_version:

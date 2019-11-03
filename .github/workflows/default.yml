@@ -5,8 +5,8 @@ on:
     branches-ignore:
       - master
     tags-ignore:
-      - *
-      - **
+      - '*'
+      - '**'
 
 jobs:
   storybook:
