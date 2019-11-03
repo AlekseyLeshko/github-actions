@@ -6,6 +6,7 @@ on:
 
 jobs:
   storybook:
+    if: github.event.comment.body == 'Deploy to test-1'
     strategy:
       matrix:
         node-version: [10.10.0]
@@ -67,6 +68,7 @@ jobs:
         path: coverage/
 
   build:
+    if: github.event.comment.body == 'Deploy to test-1'
     strategy:
       matrix:
         node-version: [10.10.0]
