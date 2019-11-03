@@ -6,19 +6,20 @@ on:
       - master
 
 jobs:
-  runs-on: ubuntu-latest
   strategy:
     max-parallel: 3
     matrix:
       node-version: [10.10.0]
 
   storybook:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build storybook
       run: echo 'Build storybook'
 
   unit_testing:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
       with:
@@ -80,12 +81,14 @@ jobs:
         echo test, and deploy your project.
 
   deploy_to_aws:
+    runs-on: ubuntu-latest
     needs: [storybook, unit_testing, build]
     steps:
     - name: Run a one-line script
       run: echo 'Deploy to stage'
 
   e2e_testing:
+    runs-on: ubuntu-latest
     needs: deploy_to_aws
     steps:
       - uses: actions/checkout@v1
