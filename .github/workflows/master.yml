@@ -16,14 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-      with:
-        ref: master
 
     - name: Bump version
       run: |
         echo $GITHUB_ACTOR
-        git branch
-        git checkout --track origin/master
         git branch
         export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
         echo $CURRENT_HASH
