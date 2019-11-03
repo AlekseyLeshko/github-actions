@@ -21,6 +21,7 @@ jobs:
 
     - name: Bump version
       run: |
+        git branch
         export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
         echo $CURRENT_HASH
         export COMMIT_MESSAGE="$(echo $(git log -n 1 --pretty=format:%B))"
@@ -40,10 +41,3 @@ jobs:
         # npm version patch -m "v%s"
         # git status
         # git push --follow-tags
-
-    - name: Github Tag Bump
-      uses: anothrNick/github-tag-action@1.7.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_BUMP: $VERSION_TYPE
-        WITH_V: true
