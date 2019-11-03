@@ -10,9 +10,6 @@ on:
 
 jobs:
   bump_version:
-    strategy:
-      matrix:
-        node-version: [10.10.0]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -33,13 +30,18 @@ jobs:
         echo $VERSION_TYPE
         git --version
         git status
-        git config --global push.default simple
-        git config --global user.email "alekseyleshko@gmail.com"
-        git config --global user.name $GITHUB_ACTOR
-        npm version $VERSION_TYPE -m "v%s"
-        git status
+        # git config --global push.default simple
+        # git config --global user.email "alekseyleshko@gmail.com"
+        # git config --global user.name $GITHUB_ACTOR
+        # npm version $VERSION_TYPE -m "v%s"
+        # git status
 
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: "Automated Version Bump"
+      uses: "phips28/gh-action-bump-version@master"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Push changes
+      # uses: ad-m/github-push-action@master
+      # with:
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
