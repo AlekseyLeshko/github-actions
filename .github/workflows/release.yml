@@ -1,13 +1,12 @@
 name: Release workflow
 
 on:
-  create:
+  push:
     branches-ignore:
       - '*'
       - '**'
     tags:
-      - '*'
-      - '**'
+      - 'v*'
 
 jobs:
   storybook:
