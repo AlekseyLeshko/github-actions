@@ -31,6 +31,9 @@ jobs:
         echo $VERSION_TYPE
         git --version
         git status
+        git config --global push.default simple
+        git config --global user.email "github@example.com"
+        git config --global user.name "GitHub"
         # npm version $VERSION_TYPE -m "v%s"
         npm version patch -m "v%s"
         git status
