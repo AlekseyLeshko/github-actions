@@ -15,10 +15,8 @@ jobs:
         node-version: [10.10.0]
     runs-on: ubuntu-latest
     steps:
-    - name: 'master pending'
-      uses: 'deliverybot/deployment-status@v1'
-      with:
-        token: '${{ github.token }}'
+    - name: Deliverybot Deployment Status
+      uses: deliverybot/deployment-status@v0.0.1
 
     - uses: actions/checkout@v1
 
@@ -41,7 +39,7 @@ jobs:
         # git push --follow-tags
 
     - name: 'master success'
-      uses: 'deliverybot/deployment-status@v1'
+      uses: deliverybot/deployment-status@v0.0.1
       with:
         state: 'success'
         token: '${{ github.token }}'
