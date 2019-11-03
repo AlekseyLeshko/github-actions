@@ -82,3 +82,14 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+  deploy_to_aws:
+    needs: [storybook, unit_testing, build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.10.0]
+
+    steps:
+    - name: Run a one-line script
+    - run: echo 'Deploy to stage'
