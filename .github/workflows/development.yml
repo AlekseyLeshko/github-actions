@@ -1,6 +1,6 @@
 name: Development
 
-on: ['deployment']
+on: ['development']
 
 jobs:
   deployment:
