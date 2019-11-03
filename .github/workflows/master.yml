@@ -33,10 +33,17 @@ jobs:
         echo $VERSION_TYPE
         git --version
         git status
-        git config --global push.default simple
-        git config --global user.email "github@example.com"
-        git config --global user.name "GitHub"
+        # git config --global push.default simple
+        # git config --global user.email "github@example.com"
+        # git config --global user.name "GitHub"
         # npm version $VERSION_TYPE -m "v%s"
-        npm version patch -m "v%s"
-        git status
-        git push --follow-tags
+        # npm version patch -m "v%s"
+        # git status
+        # git push --follow-tags
+
+    - name: Github Tag Bump
+      uses: anothrNick/github-tag-action@1.7.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEFAULT_BUMP: $VERSION_TYPE
+        WITH_V: true
