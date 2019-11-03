@@ -2,7 +2,7 @@ name: Master branch
 
 on:
   push:
-    branch:
+    branches:
       - master
     tags-ignore:
       - '*'
