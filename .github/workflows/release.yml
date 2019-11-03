@@ -1,7 +1,11 @@
 name: Release workflow
 
 on:
-  create
+  push:
+    branches:
+      - 'refs/tags/*'
+    tags:
+      - '*'
 
 jobs:
   storybook:
