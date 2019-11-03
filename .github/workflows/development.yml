@@ -1,6 +1,9 @@
 name: Development
 
-on: ['deployment']
+on:
+  push:
+    branches:
+      - development
 
 jobs:
   deployment:
