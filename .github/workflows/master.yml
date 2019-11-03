@@ -22,10 +22,8 @@ jobs:
     - name: Bump version
       run: |
         git branch
-        git log
         git checkout --track origin/master
         git branch
-        git log
         export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
         echo $CURRENT_HASH
         export COMMIT_MESSAGE="$(echo $(git log -n 1 --pretty=format:%B))"
@@ -38,10 +36,10 @@ jobs:
         echo $VERSION_TYPE
         git --version
         git status
-        # git config --global push.default simple
-        # git config --global user.email "github@example.com"
-        # git config --global user.name "GitHub"
-        # npm version $VERSION_TYPE -m "v%s"
-        # npm version patch -m "v%s"
-        # git status
-        # git push --follow-tags
+        git config --global push.default simple
+        git config --global user.email "github@example.com"
+        git config --global user.name "GitHub"
+        npm version $VERSION_TYPE -m "v%s"
+        npm version patch -m "v%s"
+        git status
+        git push --follow-tags
