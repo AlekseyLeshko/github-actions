@@ -4,9 +4,6 @@ on:
   push:
     branch:
       - 'master'
-    branches-ignore:
-      - '*'
-      - '**'
     tags-ignore:
       - '*'
       - '**'
