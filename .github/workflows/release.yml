@@ -3,7 +3,7 @@ name: Release workflow
 on:
   push:
     tags:
-    - '*'
+    - 'v*'
 
 jobs:
   storybook:
@@ -75,7 +75,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Production env
-      run: Production env
+      run: echo Production env
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Run a multi-line script
