@@ -6,23 +6,19 @@ on:
       - master
 
 jobs:
-  storybook:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.10.0]
+  runs-on: ubuntu-latest
+  strategy:
+    max-parallel: 3
+    matrix:
+      node-version: [10.10.0]
 
+  storybook:
     steps:
     - uses: actions/checkout@v1
     - name: Build storybook
       run: echo 'Build storybook'
 
   unit_testing:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.10.0]
-
     steps:
     - uses: actions/checkout@v1
       with:
@@ -85,24 +81,12 @@ jobs:
 
   deploy_to_aws:
     needs: [storybook, unit_testing, build]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.10.0]
-
     steps:
     - name: Run a one-line script
       run: echo 'Deploy to stage'
 
-
   e2e_testing:
     needs: deploy_to_aws
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 2
-      matrix:
-        node-version: [10.10.0]
-
     steps:
       - uses: actions/checkout@v1
         with:
