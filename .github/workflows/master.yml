@@ -1,0 +1,35 @@
+name: Master branch
+
+on:
+  push:
+    - master
+
+jobs:
+  storybook:
+    strategy:
+      matrix:
+        node-version: [10.10.0]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build storybook
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+
+        export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
+        echo $CURRENT_HASH
+        export COMMIT_MESSAGE="$(echo $(git log -n 1 --pretty=format:%B))"
+        echo $COMMIT_MESSAGE
+        export VERSION_TYPE="patch"
+        export TAG=$(echo $(git tag --contains $CURRENT_HASH))
+        echo $TAG
+        # export VERSION_TYPE=$(node pipelines/get-version-type.js "$COMMIT_MESSAGE")
+        if [ ! -z "$TAG" ] ; then exit 0; fi
+        echo $VERSION_TYPE
+        git --version
+        git status
+        # npm version $VERSION_TYPE -m "v%s"
+        # git status
+        # git push --follow-tags
