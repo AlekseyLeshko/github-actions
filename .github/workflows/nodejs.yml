@@ -9,7 +9,7 @@ jobs:
   storybook:
     strategy:
       matrix:
-        node-version: 10.10.0
+        node-version: [10.10.0]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
   unit_testing:
     strategy:
       matrix:
-        node-version: 10.10.0
+        node-version: [10.10.0]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -69,7 +69,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: 10.10.0
+        node-version: [10.10.0]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -87,7 +87,7 @@ jobs:
   deploy_to_aws:
     strategy:
       matrix:
-        node-version: 10.10.0
+        node-version: [10.10.0]
     runs-on: ubuntu-latest
     needs: [storybook, unit_testing, build]
     steps:
