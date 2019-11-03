@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  storybook:
+  bump_version:
     strategy:
       matrix:
         node-version: [10.10.0]
