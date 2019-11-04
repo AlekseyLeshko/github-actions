@@ -8,6 +8,16 @@ on:
       - '*'
       - '**'
 
+aliases:
+  - &show_envs
+    name: Show envs
+    env:
+      super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
+      API_URL: https://example.com
+    run: |
+      echo $super_secret
+      echo $API_URL
+
 jobs:
   storybook:
     strategy:
@@ -18,13 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Check envs
-      env:
-        super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
-        API_URL: https://example.com
-      run: |
-        echo $super_secret
-        echo $API_URL
+    - *show_envs
 
     - name: Build storybook
       run: echo 'Build storybook'
