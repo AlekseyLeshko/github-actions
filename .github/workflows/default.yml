@@ -148,13 +148,13 @@ jobs:
       - name: Node version
         run: node -v
 
-    - name: Show envs
-      env:
-        super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
-        API_URL: https://example.com
-      run: |
-        echo $super_secret
-        echo $API_URL
+      - name: Show envs
+        env:
+          super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
+          API_URL: https://example.com
+        run: |
+          echo $super_secret
+          echo $API_URL
 
       - uses: actions/cache@preview
         with:
