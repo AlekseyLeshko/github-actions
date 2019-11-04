@@ -12,6 +12,6 @@ test('adds 2 + 4 to equal 5', () => {
   expect(sum(2, 4)).toBe(6);
 });
 
-test('adds 2 + 5 to equal 7', () => {
-  expect(sum(2, 5)).toBe(7);
+test('adds 2 + 6 to equal 8', () => {
+  expect(sum(2, 6)).toBe(8);
 });
