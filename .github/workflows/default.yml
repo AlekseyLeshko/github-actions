@@ -19,6 +19,9 @@ jobs:
     - name: Build storybook
       run: echo 'Build storybook'
 
+    - name: Test
+      run: echo 'Test'
+
   unit_testing:
     strategy:
       matrix:
