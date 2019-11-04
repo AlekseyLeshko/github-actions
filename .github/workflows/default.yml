@@ -14,8 +14,16 @@ jobs:
       matrix:
         node-version: [10.10.0]
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v1
+
+    - name: Check envs
+      env:
+        super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
+      run: |
+        echo $super_secret
+
     - name: Build storybook
       run: echo 'Build storybook'
 
