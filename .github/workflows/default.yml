@@ -146,14 +146,6 @@ jobs:
       - name: Node version
         run: node -v
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Node version
-        run: node -v
-
       - name: Show envs
         env:
           super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
