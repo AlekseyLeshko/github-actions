@@ -1,15 +1,12 @@
-name: Default workflow
+name: Test-2 workflow
 
 on:
-  push:
-    branches-ignore:
-      - master
-    tags-ignore:
-      - '*'
-      - '**'
+  issue_comment:
+    types: [created, edited]
 
 jobs:
   storybook:
+    if: github.event.comment.body == 'Deploy to test-2'
     strategy:
       matrix:
         node-version: [10.10.0]
@@ -31,6 +28,7 @@ jobs:
       run: echo 'Build storybook'
 
   unit_testing:
+    if: github.event.comment.body == 'Deploy to test-2'
     strategy:
       matrix:
         node-version: [10.10.0]
@@ -90,6 +88,7 @@ jobs:
         path: coverage/
 
   build:
+    if: github.event.comment.body == 'Deploy to test-2'
     strategy:
       matrix:
         node-version: [10.10.0]
@@ -111,6 +110,7 @@ jobs:
       run: echo Build app
 
   deploy_to_aws:
+    if: github.event.comment.body == 'Deploy to test-2'
     strategy:
       matrix:
         node-version: [10.10.0]
@@ -130,6 +130,7 @@ jobs:
       run: echo Deploy to stage
 
   e2e_testing:
+    if: github.event.comment.body == 'Deploy to test-2'
     strategy:
       max-parallel: 3
       matrix:
