@@ -136,6 +136,7 @@ jobs:
         node-version: [10.10.0, 10.10.0, 10.10.0]
     container:
       image: cypress/browsers:node11.13.0-chrome73
+    runs-on: ubuntu-latest
     needs: deploy_to_aws
     steps:
       - uses: actions/checkout@v1
