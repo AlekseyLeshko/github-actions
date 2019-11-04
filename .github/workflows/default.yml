@@ -155,14 +155,14 @@ jobs:
           echo $API_URL
           echo $GITHUB_ACTION
 
-      - uses: actions/cache@v1
+      - uses: actions/cache
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - uses: actions/cache@v1
+      - uses: actions/cache
         with:
           path: ~/.cache/yarn
           key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
