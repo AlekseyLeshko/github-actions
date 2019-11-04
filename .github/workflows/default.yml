@@ -25,6 +25,7 @@ jobs:
       run: |
         echo $super_secret
         echo $API_URL
+        echo $GITHUB_ACTION
 
     - name: Build storybook
       run: echo 'Build storybook'
@@ -46,6 +47,7 @@ jobs:
       run: |
         echo $super_secret
         echo $API_URL
+        echo $GITHUB_ACTION
 
     - name: Node version
       run: node -v
@@ -103,6 +105,7 @@ jobs:
       run: |
         echo $super_secret
         echo $API_URL
+        echo $GITHUB_ACTION
 
     - name: Build app
       run: echo Build app
@@ -121,6 +124,7 @@ jobs:
       run: |
         echo $super_secret
         echo $API_URL
+        echo $GITHUB_ACTION
 
     - name: Deploy to aws
       run: echo Deploy to stage
@@ -155,6 +159,7 @@ jobs:
         run: |
           echo $super_secret
           echo $API_URL
+          echo $GITHUB_ACTION
 
       - uses: actions/cache@preview
         with:
