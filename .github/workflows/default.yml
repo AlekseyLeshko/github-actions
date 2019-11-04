@@ -21,8 +21,10 @@ jobs:
     - name: Check envs
       env:
         super_secret: ${{ secrets.DEVELOPMENT_TOKEN }}
+        API_URL: https://example.com
       run: |
         echo $super_secret
+        echo $API_URL
 
     - name: Build storybook
       run: echo 'Build storybook'
