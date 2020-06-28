@@ -35,7 +35,12 @@ jobs:
         npm version $VERSION_TYPE -m "v%s"
         git status
 
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Push changes
+      # uses: ad-m/github-push-action@master
+      # with:
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Automated Version Bump
+      uses: phips28/gh-action-bump-version@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
