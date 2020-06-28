@@ -14,6 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Bump version
+      run: |
+        export CURRENT_HASH=$(echo $(git rev-parse --short HEAD))
+        echo $CURRENT_HASH
+        export COMMIT_MESSAGE="$(echo $(git log -n 1 --pretty=format:%B))"
+        echo $COMMIT_MESSAGE
+        export VERSION_TYPE="patch"
+        export TAG=$(echo $(git tag --contains $CURRENT_HASH))
+        echo $TAG
+        if [ ! -z "$TAG" ] ; then exit 0; fi
+        echo $VERSION_TYPE
+        git --version
+        git status
+        # git config --local user.email "action@github.com"
+        git config --local user.email "alekseyleshko@gmail.com"
+        git config --local user.name $GITHUB_ACTOR
+        # git config --local user.name "GitHub Action"
+        # git config --global user.name $GITHUB_ACTOR
+        npm version $VERSION_TYPE -m "v%s"
+        git status
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
